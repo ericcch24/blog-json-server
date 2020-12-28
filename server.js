@@ -7,8 +7,8 @@ const middlewares = jsonServer.defaults();
 // @see: https://github.com/typicode/json-server/issues/401
 const db = router.db;
 
-const host = '0.0.0.0';
-const PORT = 3310 || process.env.PORT;
+const HOST = process.env.HOST || '0.0.0.0';
+const PORT = process.env.PORT || 3310;
 const jwtSecretKey = process.env.JWT_KEY || 'test_key';
 
 const ERROR_CODE = {
@@ -195,6 +195,6 @@ server.put(
 
 // Use default router
 server.use(router);
-server.listen(PORT, host, () => {
+server.listen(PORT, HOST, () => {
   console.log('JSON Server is running: http://localhost:' + PORT);
 });
