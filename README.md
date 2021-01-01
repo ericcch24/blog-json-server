@@ -1,4 +1,4 @@
-# Lidemy 學生專用 API Server
+# React Blog 專用 API Server
 
 這個專案由 [JSON server](https://github.com/typicode/json-server) 改造而成，新增了一些登入相關功能。
 
@@ -12,7 +12,7 @@
 
 底下會分開來講解。
 
-Base URL: https://student-json-api.lidemy.me
+Base URL: https://react-blog-json-server.herokuapp.com/
 
 ## Comments
 
@@ -20,7 +20,7 @@ Base URL: https://student-json-api.lidemy.me
 
 資料結構：
 
-``` json
+```json
 {
   "id": 1,
   "nickname": "Huli",
@@ -33,24 +33,24 @@ id 跟 createdAt 都會在 server 自動加上，你只要記得傳入 nickname 
 
 範例：
 
-``` js
-fetch('https://student-json-api.lidemy.me/comments', {
+```js
+fetch('https://react-blog-json-server.herokuapp.com/comments', {
   method: 'POST',
   headers: {
-    'content-type': 'application/json'
+    'content-type': 'application/json',
   },
   body: JSON.stringify({
     nickname: 'hello',
-    body: 'comment content'
-  })
+    body: 'comment content',
+  }),
 })
-.then(res => res.json())
-.then(data => console.log(data))
+  .then((res) => res.json())
+  .then((data) => console.log(data));
 ```
 
 更改資料的時候可以用 PUT 或是 PATCH，前者會把資料整個蓋過去，後者只會更改你有傳的資料。
 
-拿資料的時候可以搭配不同的 query string，例如說按照時間倒序排列：https://student-json-api.lidemy.me/comments?_sort=createdAt&_order=desc
+拿資料的時候可以搭配不同的 query string，例如說按照時間倒序排列：https://react-blog-json-server.herokuapp.com/comments?_sort=createdAt&_order=desc
 
 相關參數請參考開頭提供的 json server 文件。
 
@@ -70,25 +70,25 @@ URL: `/register`
 
 範例：
 
-``` js
-fetch('https://student-json-api.lidemy.me/register', {
+```js
+fetch('https://react-blog-json-server.herokuapp.com/register', {
   method: 'POST',
   headers: {
-    'content-type': 'application/json'
+    'content-type': 'application/json',
   },
   body: JSON.stringify({
     nickname: 'hello',
     username: 'hey',
-    password: '1234'
-  })
+    password: '1234',
+  }),
 })
-.then(res => res.json())
-.then(data => console.log(data))
+  .then((res) => res.json())
+  .then((data) => console.log(data));
 ```
 
 response:
 
-``` js
+```js
 {
   ok: 1,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhleSIsInVzZXJJZCI6IjAwNmIwNjkwYTgyY2YiLCJpYXQiOjE2MDQxMzI4MTZ9.dfJ4z8DIASsPEytsHE3zA1i2MgNCb2zMLogfqq5ugWU"
@@ -111,19 +111,20 @@ Server 在需要驗證身份的時候會去檢查這個 header，並把 JWT toke
 
 範例：
 
-``` js
-fetch('https://student-json-api.lidemy.me/me', {
+```js
+fetch('https://react-blog-json-server.herokuapp.com/me', {
   headers: {
-    'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhleSIsInVzZXJJZCI6IjAwNmIwNjkwYTgyY2YiLCJpYXQiOjE2MDQxMzI4MTZ9.dfJ4z8DIASsPEytsHE3zA1i2MgNCb2zMLogfqq5ugWU'
-  }
+    authorization:
+      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhleSIsInVzZXJJZCI6IjAwNmIwNjkwYTgyY2YiLCJpYXQiOjE2MDQxMzI4MTZ9.dfJ4z8DIASsPEytsHE3zA1i2MgNCb2zMLogfqq5ugWU',
+  },
 })
-.then(res => res.json())
-.then(data => console.log(data))
+  .then((res) => res.json())
+  .then((data) => console.log(data));
 ```
 
 response:
 
-``` js
+```js
   "ok": 1,
   "data": {
     "id": "006b0690a82cf",
@@ -144,10 +145,8 @@ URL: `/posts`
 
 https://student-json-api.lidemy.me/posts?userId=1
 
-還可以利用 `_expand` 一併把每篇文章的 user 抓出來：https://student-json-api.lidemy.me/posts?userId=1&_expand=user
+還可以利用 `_expand` 一併把每篇文章的 user 抓出來：https://react-blog-json-server.herokuapp.com/posts?userId=1&_expand=user
 
-相同的，也可以反過來做，抓取某個 user，然後把他底下的文章一起抓出來：https://student-json-api.lidemy.me/users/1?_embed=posts
+相同的，也可以反過來做，抓取某個 user，然後把他底下的文章一起抓出來：https://react-blog-json-server.herokuapp.com/users/1?_embed=posts
 
 相關用法請參考 json server 官方文件
-
-
