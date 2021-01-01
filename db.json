@@ -20,6 +20,20 @@
       "createdAt": 1604131410650,
       "userId": "005a7c809b02a8",
       "id": 3
+    },
+    {
+      "title": "Git 基礎概念與版本控制操作",
+      "body": "簡易比喻概念\n當檔案更新了，要用 git 建立新版本並加入版本控制 git add ==> 等於你先建立一個暫時存放你剛剛更新的檔案的資料夾，檔案每更新一個版本就要多弄一個暫存的資料夾，然後把檔案放到裡面。為了避免不同版本名稱互相衝突難以辨別，git 會用看似亂數的東西當作資料夾名稱。\n如果這個檔案不會在更動了 .gitignore，不想加入版本控制，那就不要加入資料夾。\n新建版本 git commit 把暫存檔案的資料夾改名為你要的版本名稱 --> 也就是當檔案新版本建立好之後，把資料夾改成你要的名字。\n如果要辨別最新版本的檔案 ==> 額外用一個新檔案來記錄保存。",
+      "createdAt": 1609505681741,
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "title": "JavaScript 中的同步與非同步 & event loop",
+      "body": "同步與非同步 synchronous & asynchronous\nnode.js 部分\nNode.js 的官方文件說：\n\nBlocking methods execute synchronously and non-blocking methods execute asynchronously.\n\n阻塞的方法會同步地（synchronously）執行，而非阻塞的方法會非同步地（asynchronously）執行\n\n簡單舉例：\n在又要讀檔又要印出偶數的範例中，同步指的就是彼此互相協調互相等待，所以讀檔還沒完成的時候，是不能印偶數的，印出偶數一定要等到讀取檔案結束之後才能進行。\n\n非同步就是說各做各的，你讀檔就讀你的，我繼續印我的偶數，大家腳步不一致沒關係，因為我們本來就不同步。\n\n在討論到 JavaScript 的同步與非同步問題時，基本上你可以把非同步跟非阻塞劃上等號，同步與阻塞劃上等號。如果你今天執行一個同步的方法（例如說readFileSync），就一定會阻塞；如果執行一個非同步的方法（readFile），就一定不會阻塞。",
+      "createdAt": 1609505727347,
+      "userId": 1,
+      "id": 5
     }
   ],
   "comments": [
