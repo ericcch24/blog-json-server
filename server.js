@@ -80,7 +80,7 @@ const requireLogin = (req, res, next) => {
 
   try {
     jwtData = jwt.verify(token, jwtSecretKey);
-  } catch (err) {}
+  } catch (err) { }
 
   if (!jwtData) {
     res.status(401);
@@ -124,7 +124,7 @@ server.post('/register', (req, res, next) => {
       id: userId,
       username: req.body.username,
       nickname: req.body.nickname,
-      password: 'Lidemy',
+      password: '123456',
     })
     .write();
 
